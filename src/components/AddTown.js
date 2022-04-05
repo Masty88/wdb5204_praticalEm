@@ -48,7 +48,7 @@ const AddTown = () => {
     const onClick=(town)=>{
         console.log(town)
         // setTown(town)
-        dispatch(changeTown(town))
+        dispatch(getCity(town))
     }
 
 
