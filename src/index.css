@@ -1,13 +1,174 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+a{
+  color: black;
+}
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #141515;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+/*--Layout--*/
+.appBar{
+  position: static;
+  background-color: #decd43;
+  width: 100%;
+  height: 50px;
+  display: flex ;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+}
+
+.container{
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  color: white;
+}
+
+.flexCont{
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*--Landing*/
+.landing{
+  width: 100%;
+  height: 100vh;
+  background-color: #383838;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.sideBar{
+  width: 30%;
+  height: 100%;
+  background-color: #decd43;
+}
+
+.mainScreen{
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/*--Form--*/
+input[type=text], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#comment{
+  width: 50%;
+  padding: 8px 8px;
+  margin: 8px 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+label{
+  color: #141515;
+}
+
+textarea { resize: none; }
+
+.containerBtn{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/*--Comments*/
+.containerComment{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.commentCard{
+  width: 70%;
+  border: solid 1px #1f1f1f;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+/*--Button*/
+.btn{
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  background-color: darkblue;
+  color: white;
+  cursor: pointer;
+}
+
+/*--Loading*/
+.Box{
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  backdrop-filter: blur(10px);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.spinner{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
 }

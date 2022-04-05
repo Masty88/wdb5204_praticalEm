@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getCity, getMeteo} from "./redux/meteo/meteoSlice";
+import Loading from "./components/Loading";
+import Landing from "./pages/Landing";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+const App = () => {
+    const{meteo,city,isLoading}=useSelector(state=>state.meteo)
+    const dispatch= useDispatch()
+    const [loading,setLoading]=useState(true)
+
+
+    useEffect(()=>{
+        dispatch(getCity(city))
+        console.log(city)
+        if(!isLoading){
+            setTimeout(()=>{
+                setLoading(false)
+            },1000)
+        }
+
+    },[])
+
+    useEffect(()=>{
+        if(city){
+            console.log(city[0].lat)
+            dispatch(getMeteo(city))
+        }
+    },[city])
+
+    return (
+        <>
+            {loading?
+                (<Loading loading={loading}/>):
+                (
+                        <Landing city={city}/>
+                )}
+        </>
+    );
+};
 
 export default App;
